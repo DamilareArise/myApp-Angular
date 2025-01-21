@@ -1,0 +1,23 @@
+<div class="container mt-5 border border-dark align-content-center" style="height: 60dvh;">
+  <div class="col-md-7 container text-center">
+    <h3 class="">Our Blog</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, soluta doloremque ad dolores porro odio, tempora quos itaque voluptates sit repellat perspiciatis eius consectetur, iure corrupti aperiam veritatis illo quam?</p>
+  </div>
+
+</div>
+<div class="container">
+  <div class="row">
+      @if (blogs.length > 0) {
+        @for (blog of blogs; track $index) {
+          <div class="col-md-4 mt-3">
+            <img [src]="blog.imageUrl" alt="blogUrl" height="200">
+            <h4>{{ blog.title }}</h4>
+            <p>{{ blog.story.slice(0, 40) }}...</p>
+            <a [routerLink]="['single-blog', blog.id]">read more</a>
+          </div>
+        }
+      }@else {
+        <p>No blogs found.</p>
+      }
+  </div>
+</div>

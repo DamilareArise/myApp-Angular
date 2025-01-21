@@ -1,0 +1,8 @@
+<div class="container my-4">
+  {{ id }}
+  <img [src]="blog?.imageUrl" alt="blog-image">
+  <h2>{{ blog?.title }}</h2>
+  <p>{{ blog?.story }}</p>
+  <button class="btn btn-danger" (click)="deleteBlog()">Delete</button>
+
+</div>
