@@ -9,21 +9,24 @@ import { blog } from '../add-blog/blogsType.model';
   styleUrl: './single-blog.component.css'
 })
 export class SingleBlogComponent {
-  id:number = 1
+  id:number|any ;
+
   // route = inject(ActivatedRoute)
   blogs: blog[] = JSON.parse(localStorage.getItem('blogs') || '[]')
-  router = inject(Router)
-  blog:blog|undefined 
-  
+  router:any
+  // router = inject(Router)
+  blog:blog|undefined
+
   ngOnInit(){
     this.blog = this.blogs.find((blog:blog)=>{
       return blog.id == this.id
     })
-    
+
   }
-  
-  constructor(private route: ActivatedRoute){
+
+  constructor(private route: ActivatedRoute, router: Router ){
     // this.id = this.route.snapshot.params['id'];
+    this.router = router
     this.route.params.subscribe((params)=>{
       this.id = params['id']
     })
