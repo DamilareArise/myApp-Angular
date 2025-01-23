@@ -1,16 +1,48 @@
 <div class="container col-md-5 my-4 border p-3">
-  <form>
+  <form [formGroup]="signupForm" (submit)="handleSignup()">
     <h3 class="text-center">Sign up</h3>
-    <input type="text" placeholder="Fullname" name="fullname" class="form-control mb-2">
-    <input type="email" placeholder="Email" name="email" class="form-control mb-2">
-    <input type="password" placeholder="Password" name="password" class="form-control mb-2">
-    <input type="password" placeholder="Confirm Password" name="confirm_password" class="form-control mb-2">
-    <button class="btn btn-dark w-100 mb-2" type="submit">Login</button>
-    <hr>
-    <p class="text-center">I have an account? <a [routerLink]="['/login']">Login
-      </a>
+    
+    <input
+      type="text"
+      placeholder="Fullname"
+      class="form-control mb-2"
+      formControlName = "fullname"
+    />
+    <div *ngIf="signupForm.get('fullname')?.invalid && signupForm.get('fullname')?.touched">
+      <small *ngIf="signupForm.get('fullname')?.errors?.['required']" class="text-danger">Fullname required</small>
+    </div>
+    <input
+      type="email"
+      placeholder="Email"
+      class="form-control mb-2"
+      formControlName = "email"
+    />
+    <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
+      <small *ngIf="signupForm.get('email')?.errors?.['required']" class="text-danger">Email required</small>
+      <small *ngIf="signupForm.get('email')?.errors?.['email']" class="text-danger">Input a valid email</small>
+
+    </div>
+    <select formControlName="gender" id="" class="form-control mb-2">
+      <option value="">Select Gender</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>
+    <input
+      type="password"
+      placeholder="Password"
+      formControlName="password"
+      class="form-control mb-2"
+    />
+    <input
+      type="password"
+      placeholder="Confirm Password"
+      formControlName="confirm_password"
+      class="form-control mb-2"
+    />
+    <button class="btn btn-dark w-100 mb-2" type="submit" >Sign up</button>
+    <hr />
+    <p class="text-center">
+      I have an account? <a [routerLink]="['/login']">Login </a>
     </p>
-
   </form>
-
 </div>
