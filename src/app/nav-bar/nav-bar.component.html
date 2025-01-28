@@ -14,12 +14,18 @@
           <a class="nav-link" href="#">Blogs</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
+            {{username}}
         </li>
         <li class="nav-item">
-          <a class="btn btn-dark" [routerLink]="['add-blog']">Create Post</a>
+          <button class="btn btn-primary mb-2 mx-2" (click)="handleClick()"> addItem </button>
         </li>
-        <li class="nav-item ms-2">
+        <li class="nav-item">
+          <button class="btn btn-primary mb-2 mx-2" (click)="sendMessage()"> Send Message </button>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-dark mb-2" [routerLink]="['add-blog']">Create Post</a>
+        </li>
+        <li class="nav-item ms-2  mb-2">
           <a class="btn btn-outline-dark" [routerLink]="['login']">Login</a>
         </li>
       </ul>

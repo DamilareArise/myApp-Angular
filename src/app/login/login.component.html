@@ -1,14 +1,31 @@
 <div class="container col-md-5 my-4 border p-3">
-  <form>
+
+  <form [formGroup]="loginForm" (submit)="handleSubmit()">
     <h3 class="text-center">Login</h3>
-    <input type="email" placeholder="Email" name="email" class="form-control mb-2">
-    <input type="password" placeholder="Password" name="password" class="form-control mb-2">
-    <button class="btn btn-dark w-100 mb-2" type="submit">Login</button>
-    <hr>
-    <p class="text-center">Don't have an account? <a [routerLink]="['/signup']">Sign up
-      </a>
+    <input
+      type="email"
+      placeholder="Email"
+      class="form-control mb-2"
+      formControlName="email"
+    />
+    <div *ngIf="loginForm.controls['email']?.invalid && loginForm.get('email')?.touched">
+      <small *ngIf="loginForm.get('email')?.errors?.['required']" class="text-danger">Email required</small>
+      <small *ngIf="loginForm.get('email')?.errors?.['email']" class="text-danger">Input a valid email</small>
+    </div>
+    <input
+      type="password"
+      placeholder="Password"
+      class="form-control mb-2"
+      formControlName="password"
+    />
+    <div *ngIf="loginForm.controls['password']?.invalid && loginForm.get('password')?.touched">
+      <small *ngIf="loginForm.get('password')?.errors?.['required']" class="text-danger">Password required</small>
+      <small *ngIf="loginForm.get('password')?.errors?.['minlength']" class="text-danger">Password can't be less than 4 characters</small>
+    </div>
+    <button class="btn btn-dark w-100 mb-2" [disabled]="loginForm.invalid">Login</button>
+    <hr />
+    <p class="text-center">
+      Don't have an account? <a [routerLink]="['/signup']">Sign up </a>
     </p>
-
   </form>
-
 </div>

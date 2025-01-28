@@ -16,7 +16,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 export class AppComponent {
   title = 'myApp';
   name:string = 'May Cohort';
-  myName = '';
+  myName = 'Damilare';
   students:string[] = ['Femi', 'John', 'Ade']
   isSuccess = true
   sqi_link:string = 'http://edu.sqi.ng'
@@ -97,4 +97,18 @@ export class AppComponent {
   //   let val = e.target as HTMLInputElement
   //   this.displayInput = val.value
   // }
+
+
+  items:string[] = []
+  message = ''
+
+  handleMessage(message:string){
+    this.message = message
+  }
+
+  addItem(item: string) {
+    this.items.push(item);
+    console.log(this.items);
+
+  }
 }

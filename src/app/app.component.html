@@ -59,7 +59,12 @@
 </div> -->
 
 
-<app-nav-bar></app-nav-bar>
+<app-nav-bar [username]="myName" (addItemEvent)="addItem($event)" (sendMessageEvent)="handleMessage($event)"></app-nav-bar>
+<p>🐢 all the way down {{ items.length }}</p>
+<button (click)="addItem('Hey')">Add Item</button>
+<hr>
+<h3>{{message}}</h3>
+<button (click)="handleMessage('Hello from parent component')">send message</button>
 <router-outlet></router-outlet>
 
 
