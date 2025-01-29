@@ -1,3 +1,13 @@
+  <!-- @for (item of $posts ; track item.id ) {
+    <div class="container col-md-4 border p-3 my-4">
+      <h3 class="text-center">{{ item.title }}</h3>
+      <p>{{ item.body }}</p>
+    </div>
+  }@empty {
+    <p>No posts found.</p>
+  }
+ -->
+
 <div>
   <div class="container col-md-4 border p-3 my-4">
     <h3 class="text-center">Create Post</h3>
@@ -23,7 +33,7 @@
         placeholder="Image Link"
         [(ngModel)]="blogInfo.imageUrl"
       />
-      
+
       <button class="btn btn-outline-dark w-100" type="submit">Post</button>
     </form>
   </div>

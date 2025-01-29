@@ -10,11 +10,14 @@
       @if (blogs.length > 0) {
         @for (blog of blogs; track $index) {
           <div class="col-md-4 mt-3">
-            <img [src]="blog.imageUrl" alt="blogUrl" height="200">
+            <img [src]="" alt="blogUrl" height="200">
             <h4>{{ blog.title }}</h4>
-            <p>{{ blog.story.slice(0, 40) }}...</p>
-            <a [routerLink]="['single-blog', blog.id]">read more</a>
+            <p>{{ blog.body.slice(0, 40) }}...</p>
+            <a [routerLink]="['single-blog', blog.userId]">read more</a>
           </div>
+        }
+        @empty {
+          <p>No blogs found.</p>
         }
       }@else {
         <p>No blogs found.</p>

@@ -2,14 +2,24 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { blog } from './blogsType.model';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { Post, PostService } from '../post.service';
+
+
+
+
 
 @Component({
   selector: 'app-add-blog',
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './add-blog.component.html',
   styleUrl: './add-blog.component.css'
 })
+
 export class AddBlogComponent {
+
+  postService = inject(PostService)
 
   blogs: blog[] = []
 
@@ -43,7 +53,18 @@ export class AddBlogComponent {
       console.log(this.blogs);
 
       localStorage.setItem('blogs', JSON.stringify(this.blogs))
+
+      // this.postService.createPost(this.blogInfo).subscribe({
+      //   next: (data) => {
+      //     console.log(data)
+      //   },
+      //   error: (error) => {
+      //     console.log(error)
+      // })
+      
       alert('Posted Successfully')
+
+
 
       this.resetInput()
 

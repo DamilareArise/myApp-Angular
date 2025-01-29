@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { Post, PostService } from '../post.service';
 
 
 @Component({
@@ -10,5 +11,20 @@ import { RouterModule } from '@angular/router';
 })
 export class HomeComponent {
 
-  blogs = JSON.parse(localStorage.getItem('blogs') || '[]');
+  postService = inject(PostService)
+
+
+  // blogs = JSON.parse(localStorage.getItem('blogs') || '[]');
+  blogs: Post[] = []
+  constructor() { 
+    this.postService.getPost().subscribe({
+      next: (data) => {
+        this.blogs = data
+      },
+      error: (error) => {
+        console.log(error)
+      }
+    })
+
+  }
 }
