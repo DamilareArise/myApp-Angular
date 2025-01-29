@@ -7,7 +7,7 @@
 </div>
 <div class="container">
   <div class="row">
-      @if (blogs.length > 0) {
+      
         @for (blog of blogs; track $index) {
           <div class="col-md-4 mt-3">
             <img [src]="" alt="blogUrl" height="200">
@@ -19,8 +19,6 @@
         @empty {
           <p>No blogs found.</p>
         }
-      }@else {
-        <p>No blogs found.</p>
-      }
+      
   </div>
 </div>
